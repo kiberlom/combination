@@ -2,9 +2,10 @@ package combination
 
 import (
 	"fmt"
+	"testing"
 )
 
-func main() {
+func Test(t *testing.T) {
 	//comb.Set(10,[]string{"a", "b"})
 
 	a := GetFirst()

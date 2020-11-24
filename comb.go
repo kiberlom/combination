@@ -34,8 +34,57 @@ var pull = setting{
 	},
 }
 
-func Set(l int, m []string) {
-	pull = setting{l, m}
+// строка в массив
+func strToMass(s string) []string {
+
+	var m []string
+
+	for _, r := range s {
+		m = append(m, string(r))
+	}
+	return m
+
+}
+
+//убираем повторяющиеся символы из массива (Внимание!!! итерация по картам происходит не по порядку, поэтому порядок в массве меняется это не допустимо надо переделать без карт)
+func clearMass() {
+
+	// времменная карта
+	m := make(map[string]bool)
+
+	// создаем уникальные ключи из массива
+	for _, y := range pull.com {
+		m[y] = true
+	}
+
+	//новый массив с уникальными значениями
+	var new []string
+
+	// пересобираем массив
+	for t, _ := range m {
+		new = append(new, t)
+	}
+
+	// обновляем массив
+	pull.com = new
+
+}
+
+// задать свой надор символов и динну
+func Set(l int, m interface{}) {
+
+	switch f := m.(type) {
+	case string:
+		//преобразуем в массив
+		pull = setting{l, strToMass(f)}
+	case []string:
+		pull = setting{l, f}
+	default:
+		panic("Задан не подходящий типа набора символов")
+	}
+
+	// чистим массив от повторений
+	clearMass()
 
 }
 

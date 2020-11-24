@@ -6,11 +6,12 @@ import (
 )
 
 func Test(t *testing.T) {
-	//comb.Set(10,[]string{"a", "b"})
+	//Set(10,[]string{"a", "b", "b", "v", "a"})
+	Set(10, "asdfghj")
 
 	a := GetFirst()
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 10; i++ {
 		s, err := Next(a)
 
 		if err != nil {

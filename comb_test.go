@@ -6,8 +6,8 @@ import (
 )
 
 func Test(t *testing.T) {
-	//Set(10,[]string{"a", "b", "b", "v", "a"})
-	Set(10, "asdfghj")
+
+	Set(10, "asdfghjjabc")
 
 	a := GetFirst()
 

@@ -49,24 +49,28 @@ func strToMass(s string) []string {
 //убираем повторяющиеся символы из массива (Внимание!!! итерация по картам происходит не по порядку, поэтому порядок в массве меняется это не допустимо надо переделать без карт)
 func clearMass() {
 
-	// времменная карта
-	m := make(map[string]bool)
+	var clear []string
 
-	// создаем уникальные ключи из массива
-	for _, y := range pull.com {
-		m[y] = true
+	chek := func(s string) bool {
+		for _, r := range clear {
+			if s == r {
+				return true
+			}
+		}
+
+		return false
 	}
 
-	//новый массив с уникальными значениями
-	var new []string
+	for _, v := range pull.com {
 
-	// пересобираем массив
-	for t, _ := range m {
-		new = append(new, t)
+		if !chek(v) {
+			clear = append(clear, v)
+		}
+
 	}
 
 	// обновляем массив
-	pull.com = new
+	pull.com = clear
 
 }
 
